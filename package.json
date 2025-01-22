@@ -1,11 +1,12 @@
 {
   "scripts": {
-     "dev": "webpack serve --open --config webpack.dev.js",
-     "build": "webpack --config webpack.prod.js",
-     "deploy": "git subtree push --prefix dist origin"
-    },
+    "dev": "webpack serve --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "deploy": "git subtree push --prefix dist origin gh-pages"
+  },
   "devDependencies": {
     "css-loader": "^7.1.2",
+    "date-fns": "^4.1.0",
     "html-loader": "^5.1.0",
     "html-webpack-plugin": "^5.6.3",
     "style-loader": "^4.0.0",
