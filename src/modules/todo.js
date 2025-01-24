@@ -10,12 +10,18 @@ class toDo {
 };
 
 let lists;
-function createList(list, todo) {
+function createList(list, ...todo) {
     if (list in lists) {
-        lists[list].push(todo);
+        lists[list].push(todo[0]);
     } else {
-        lists[list] = [todo];
+        lists[list] = [todo[0]];
     };
 };
 
-export { toDo, lists, createList };
+function defaultList(todo) {
+    let allTask = [];
+    allTask.push(todo);
+    lists.push(allTask);
+};
+
+export { toDo, lists, createList, defaultList };
