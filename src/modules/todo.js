@@ -1,11 +1,9 @@
 class toDo {
-    constructor(title, desc, priority, dueDate, checkStatus, project) {
+    constructor(title, priority, dueDate, list) {
         this.title = title;
-        this.desc = desc;
         this.priority = priority;
         this.dueDate = dueDate;
-        this.checkStatus = checkStatus;
-        this.list = project; 
+        this.list = list; 
     };
 };
 
