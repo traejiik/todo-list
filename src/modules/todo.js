@@ -1,4 +1,6 @@
-class toDo {
+let lists = JSON.parse(localStorage.getItem("lists")) || {};
+
+class toDo{
     constructor(title, priority, dueDate, list) {
         this.title = title;
         this.priority = priority;
@@ -7,13 +9,12 @@ class toDo {
     };
 };
 
-let lists;
+// let lists;
 function createList(list, ...todo) {
-    if (list in lists) {
-        lists[list].push(todo[0]);
-    } else {
-        lists[list] = [todo[0]];
+    if (!lists[list]) {
+        lists[list] = [];
     };
+    lists[list].push(todo);
 };
 
 function defaultList(todo) {
