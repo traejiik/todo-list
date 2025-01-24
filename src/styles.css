@@ -53,6 +53,8 @@ body {
     flex-direction: column;
     width: 100%;
     gap: 1rem;
+    border-bottom: 1px solid grey;
+    padding-bottom: 1rem;
     margin-bottom: 3rem;
 }
 
@@ -114,4 +116,7 @@ body {
 .content {
     width: 100%;
     height: 800px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
 }
