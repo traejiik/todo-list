@@ -5,13 +5,13 @@ import { lists } from "./todo";
 function addListsToSidebar() {
     const listCtn = document.querySelector(".list-ctn");
 
-    for (item in lists) {
+    Object.keys(lists).forEach(item => {
         const allTask = document.createElement("div");
         allTask.classList.add("list-tag");
         allTask.innerHTML = listIcon;
         allTask.textContent = `${item}`;
         listCtn.appendChild(allTask);
-    };
+    });
 };
 
 function dispTodo(task) {
@@ -20,7 +20,9 @@ function dispTodo(task) {
     todo.classList.add("todo-card");
 
     const sub1 = document.createElement("div");
+    sub1.classList.add("card-sub1");
     const sub2 = document.createElement("div");
+    sub2.classList.add("card-sub2");
 
     const check = document.createElement("input");
     check.type = "checkbox";
@@ -39,9 +41,11 @@ function dispTodo(task) {
     }
     
     const listInd = document.createElement("div");
+    listInd.classList.add("list-indicator");
     listInd.innerHTML = listIcon;
     listInd.textContent = task.list;
     const dateInd = document.createElement("div");
+    dateInd.classList.add("date-indicator");
     dateInd.textContent = task.dueDate;
 
     sub1.appendChild(check);
