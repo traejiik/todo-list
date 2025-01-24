@@ -22,6 +22,96 @@ body {
     gap: 1rem;
 }
 
+.container > div {
+    border-radius: 0.7rem;
+    background-color: lightgray;
+}
+
 /* SIDEBAR ELEMENTS */
+.sidebar {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Outfit", Arial, sans-serif;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+}
+
+.logo > svg {
+    height: 5rem;
+    fill: orangered;
+}
+
+.sidebar-btns {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.sidebar-btns > button {
+    width: 100%;
+    height: 3.4rem;
+    border-radius: 0.7rem;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: lightgray;
+}
+
+.sidebar-btns button:hover {
+    filter: brightness(70%);
+    transition: 0.3s ease;
+}
+
+.sidebar-btns button > div {
+    display: grid;
+    grid-template-columns: 2rem 10rem;
+    gap: 0.5rem;
+    font-size: 1.7rem;
+    font-weight: 600;
+    justify-items: left;
+}
+
+.sidebar-btns button div > svg {
+    height: 2rem;
+    align-self: center;
+}
+
+.add-todo svg,
+.add-list svg {
+    fill: green;
+}
+
+.add-todo,
+.add-list {
+    color: green;
+}
 
 /* MAIN ELEMENTS */
+.main {
+    padding: 1rem;
+}
+
+.list-header {
+    background-color: white;
+    height: 3rem;
+    width: 50%;
+    border-radius: 4rem;
+    box-shadow: 0px 0px 12px grey;
+    margin-bottom: 3rem;
+}
+
+.content {
+    width: 100%;
+    height: 800px;
+}
