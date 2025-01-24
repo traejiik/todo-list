@@ -28,10 +28,19 @@ function dispTodo(task) {
     title.textContent = task.title;
     const prio = document.createElement("div");
     prio.innerHTML = prioIcon;
+    const prioSvg = prio.querySelector("svg");
 
+    if (task.priority === "high") {
+        prioSvg.style.fill = "red";
+    } else if (task.priority === "medium") {
+        prioSvg.style.fill = "orange";
+    } else {
+        prioSvg.style.fill = "green";
+    }
+    
     const listInd = document.createElement("div");
     listInd.innerHTML = listIcon;
-    listInd.textContent = task.project;
+    listInd.textContent = task.list;
     const dateInd = document.createElement("div");
     dateInd.textContent = task.dueDate;
 
@@ -48,4 +57,4 @@ function dispTodo(task) {
     disp.appendChild(todo);
 };
 
-export { addListsToSidebar };
+export { addListsToSidebar, dispTodo };
