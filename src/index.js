@@ -8,3 +8,13 @@ import prioIcon from "./assets/icons/exclam.svg";
 import todayIcon from "./assets/icons/today.svg";
 import listIcon from "./assets/icons/pound.svg";
 
+let savedLists = localStorage.getItem("lists");
+if (savedLists) {
+    lists = JSON.parse(savedLists);
+} else {
+    lists = {};
+}
+
+function saveToStorage() {
+    localStorage.setItem("lists", JSON.stringify(lists));
+};
