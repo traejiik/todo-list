@@ -22,7 +22,7 @@ body {
     gap: 1rem;
 }
 
-.container > div {
+.container>div {
     border-radius: 0.7rem;
     background-color: lightgray;
 }
@@ -43,7 +43,7 @@ body {
     margin-bottom: 3rem;
 }
 
-.logo > svg {
+.logo>svg {
     height: 5rem;
     fill: orangered;
 }
@@ -58,7 +58,7 @@ body {
     margin-bottom: 3rem;
 }
 
-.sidebar-btns > button {
+.sidebar-btns>button {
     width: 100%;
     height: 3.4rem;
     border-radius: 0.7rem;
@@ -75,7 +75,7 @@ body {
     transition: 0.3s ease;
 }
 
-.sidebar-btns button > div {
+.sidebar-btns button>div {
     display: grid;
     grid-template-columns: 2rem 10rem;
     gap: 0.5rem;
@@ -84,7 +84,7 @@ body {
     justify-items: left;
 }
 
-.sidebar-btns button div > svg {
+.sidebar-btns button div>svg {
     height: 2rem;
     align-self: center;
 }
@@ -97,6 +97,44 @@ body {
 .add-todo,
 .add-list {
     color: green;
+}
+
+.list-ctn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 450px;
+    gap: 1rem;
+}
+
+.list-tag {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgrey;
+    grid-template-columns: 2rem 10rem;
+    border-radius: 0.7rem;
+    font-size: 1.7rem;
+    padding: 0 1.4rem;
+    gap: 0.5rem;
+    font-weight: 600;
+    width: 100%;
+    height: 3.4rem;
+}
+
+.list-tag div {
+    justify-self: start;
+}
+
+.list-tag svg {
+    height: 2rem;
+    justify-self: end;
+}
+
+.list-tag:hover {
+    filter: brightness(70%);
+    transition: 0.3s ease;
 }
 
 /* MAIN ELEMENTS */
