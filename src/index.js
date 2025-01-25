@@ -11,6 +11,7 @@ function saveToStorage() {
 function addTodo() {
     const addTodoBtn = document.querySelector(".add-todo");
     const diaLog = document.querySelector(".input-todo");
+    const formD = document.getElementById("#fancy-form");
     const submitBtn = document.querySelector(".todo-add");
     const closeBtn = document.querySelector(".todo-close");
     const title = document.querySelector("#title");
@@ -41,6 +42,7 @@ function addTodo() {
             dispTodo(todo)
         };
         diaLog.close();
+        formD.reset();
     })
 };
 
