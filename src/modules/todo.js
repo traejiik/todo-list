@@ -3,7 +3,7 @@ let lists;
 if (savedList) {
     lists = savedList;
 } else {
-    lists = { "All Tasks": [] };
+    lists = { "All ToDos": [] };
 };
 
 // to-do class
@@ -29,7 +29,7 @@ function newList(list) {
 };
 
 function defaultList(todo) {
-    lists["All Tasks"].push(todo);
+    lists["All ToDos"].push(todo);
 };
 
 export { toDo, lists, createListTodo, newList, defaultList };
