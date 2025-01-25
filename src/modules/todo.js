@@ -5,6 +5,7 @@ if (savedList) {
     lists = { "All Tasks": [] };
 };
 
+// to-do class
 class toDo{
     constructor(title, priority, dueDate, ...list) {
         this.title = title;
@@ -14,7 +15,7 @@ class toDo{
     };
 };
 
-// let lists;
+// lists
 function createListTodo(list, ...todo) {
     if (!lists[list]) {
         lists[list] = [];
