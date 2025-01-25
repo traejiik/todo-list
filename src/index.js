@@ -50,11 +50,38 @@ function addTodo() {
 };
 
 function addList() {
+    const addlistFrm = document.querySelector(".input-list");
     const addListBtn = document.querySelector(".add-list");
-}
+    const listInp = document.getElementById("create-list");
+    const crtListBtn = document.querySelector(".create-list");
+    const closeListBtn = document.querySelector(".close-list");
+
+    addListBtn.addEventListener("click", () => {
+        addlistFrm.style.display = "flex";
+        listInp.focus();
+    });
+
+    closeListBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        addlistFrm.style.display = "none";
+    });
+
+    crtListBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        if (listInp.value === "") {
+            alert("Please enter a list name");
+        } else {
+            newList(listInp.value);
+            addlistFrm.style.display = "none";
+            addListsToSidebar();
+            saveToStorage();
+        };
+    });
+};
 
 // call functions
 addListsToSidebar();
 displaySavedTodos();
 
 addTodo();
+addList();
