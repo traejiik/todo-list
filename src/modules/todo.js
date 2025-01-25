@@ -1,3 +1,5 @@
+import { saveToStorage } from "../index.js";
+
 let lists = JSON.parse(localStorage.getItem("lists")) || {};
 
 class toDo{
@@ -15,6 +17,7 @@ function createList(list, ...todo) {
         lists[list] = [];
     };
     lists[list].push(todo);
+    saveToStorage();
 };
 
 function defaultList(todo) {
@@ -22,6 +25,7 @@ function defaultList(todo) {
         lists["All Tasks"] = [];
     };
     lists["All Tasks"].push(todo);
+    saveToStorage();
 };
 
 export { toDo, lists, createList, defaultList };
