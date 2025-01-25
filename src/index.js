@@ -33,14 +33,12 @@ function addTodo() {
         if (list.value === "") {
             let todo = new toDo(title.value, prio.value, dateIn.value);
             defaultList(todo);
-            saveToStorage();
             addListsToSidebar();
             dispTodo(todo);
         } else {
             let todo = new toDo(title.value, prio.value, dateIn.value, list.value);
             defaultList(todo);
             createListTodo(list.value, todo);
-            saveToStorage();
             addListsToSidebar();
             dispTodo(todo)
         };
@@ -74,7 +72,6 @@ function addList() {
             newList(listInp.value);
             addlistFrm.style.display = "none";
             addListsToSidebar();
-            saveToStorage();
         };
     });
 };
@@ -85,3 +82,5 @@ displaySavedTodos();
 
 addTodo();
 addList();
+
+export { saveToStorage };
