@@ -8,16 +8,15 @@ if (savedList) {
 
 // to-do class
 class toDo{
-    constructor(title, priority, dueDate, ...list) {
+    constructor(title, priority, dueDate) {
         this.title = title;
         this.priority = priority;
         this.dueDate = dueDate;
-        this.list = list; 
     };
 };
 
 // lists
-function createListTodo(list, ...todo) {
+function createListTodo(list, todo) {
     if (!lists[list]) {
         lists[list] = [];
     };
