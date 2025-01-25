@@ -1,6 +1,6 @@
 import "./styles.css";
 import { toDo, lists, createList, defaultList } from "./modules/todo.js";
-import { addListsToSidebar, dispTodo } from "./modules/domelements.js";
+import { addListsToSidebar, dispTodo, displaySavedTodos } from "./modules/dom.js";
 
 // Local Storage
 function saveToStorage() {
@@ -11,7 +11,7 @@ function saveToStorage() {
 function addTodo() {
     const addTodoBtn = document.querySelector(".add-todo");
     const diaLog = document.querySelector(".input-todo");
-    const formD = document.getElementById("#fancy-form");
+    const formD = document.getElementById("fancy-form");
     const submitBtn = document.querySelector(".todo-add");
     const closeBtn = document.querySelector(".todo-close");
     const title = document.querySelector("#title");
@@ -33,17 +33,23 @@ function addTodo() {
         if (list.value === "") {
             let todo = new toDo(title.value, prio.value, dateIn.value);
             defaultList(todo);
+            saveToStorage();
             addListsToSidebar();
-            dispTodo(todo)
+            dispTodo(todo);
         } else {
             let todo = new toDo(title.value, prio.value, dateIn.value, list.value);
+            defaultList(todo);
             createList(list.value, todo);
+            saveToStorage();
             addListsToSidebar();
             dispTodo(todo)
         };
         diaLog.close();
         formD.reset();
-    })
+    });
 };
+
+addListsToSidebar();
+displaySavedTodos();
 
 addTodo();
