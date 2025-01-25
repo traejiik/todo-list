@@ -1,4 +1,4 @@
-import listIcon from "../assets/icons/pound.svg";
+import listIcon from "../assets/icons/pound-icon.svg";
 import prioIcon from "../assets/icons/exclam.svg"
 import { lists } from "./todo";
 
@@ -9,7 +9,12 @@ function addListsToSidebar() {
         const allTask = document.createElement("div");
         allTask.classList.add("list-tag");
         allTask.innerHTML = listIcon;
-        allTask.textContent = `${item}`;
+
+        const text = document.createElement("div");
+        text.classList.add("list-text");
+        text.textContent = `${item}`;
+
+        allTask.appendChild(text);
         listCtn.appendChild(allTask);
     });
 };
@@ -19,13 +24,12 @@ function dispTodo(task) {
     const todo = document.createElement("div");
     todo.classList.add("todo-card");
 
-    const sub1 = document.createElement("div");
-    sub1.classList.add("card-sub1");
-    const sub2 = document.createElement("div");
-    sub2.classList.add("card-sub2");
+    const sub = document.createElement("div");
+    sub.classList.add("card-sub");
 
     const check = document.createElement("input");
     check.type = "checkbox";
+    check.classList.add("checkbox");
     const title = document.createElement("h3");
     title.textContent = task.title;
     const prio = document.createElement("div");
@@ -40,23 +44,16 @@ function dispTodo(task) {
         prioSvg.style.fill = "green";
     }
     
-    const listInd = document.createElement("div");
-    listInd.classList.add("list-indicator");
-    listInd.innerHTML = listIcon;
-    listInd.textContent = task.list;
     const dateInd = document.createElement("div");
-    dateInd.classList.add("date-indicator");
+    dateInd.classList.add("date-ind");
     dateInd.textContent = task.dueDate;
 
-    sub1.appendChild(check);
-    sub1.appendChild(title);
-    sub1.appendChild(prio);
+    sub.appendChild(check);
+    sub.appendChild(title);
+    sub.appendChild(dateInd);
+    sub.appendChild(prio);
 
-    sub2.appendChild(listInd);
-    sub2.appendChild(dateInd);
-
-    todo.appendChild(sub1);
-    todo.appendChild(sub2);
+    todo.appendChild(sub);
 
     disp.appendChild(todo);
 };
