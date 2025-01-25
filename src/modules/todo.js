@@ -1,4 +1,5 @@
 let savedList = JSON.parse(localStorage.getItem("lists"));
+let lists;
 if (savedList) {
     lists = savedList;
 } else {
