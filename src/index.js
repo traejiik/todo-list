@@ -1,5 +1,5 @@
 import "./styles.css";
-import { toDo, lists, createList, defaultList } from "./modules/todo.js";
+import { toDo, lists, createListTodo, newList, defaultList } from "./modules/todo.js";
 import { addListsToSidebar, dispTodo, displaySavedTodos } from "./modules/dom.js";
 
 // Local Storage
@@ -39,7 +39,7 @@ function addTodo() {
         } else {
             let todo = new toDo(title.value, prio.value, dateIn.value, list.value);
             defaultList(todo);
-            createList(list.value, todo);
+            createListTodo(list.value, todo);
             saveToStorage();
             addListsToSidebar();
             dispTodo(todo)
@@ -49,6 +49,11 @@ function addTodo() {
     });
 };
 
+function addList() {
+    const addListBtn = document.querySelector(".add-list");
+}
+
+// call functions
 addListsToSidebar();
 displaySavedTodos();
 
