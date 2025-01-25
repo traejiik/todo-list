@@ -4,6 +4,7 @@ import { lists } from "./todo";
 
 function addListsToSidebar() {
     const listCtn = document.querySelector(".list-ctn");
+    listCtn.innerHTML = "";
 
     Object.keys(lists).forEach(item => {
         const allTask = document.createElement("div");
