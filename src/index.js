@@ -77,9 +77,10 @@ function addList() {
 };
 
 // call functions
+    // initial load
 addListsToSidebar();
 displaySavedTodos();
-
+    // functionality calls
 addTodo();
 addList();
 
