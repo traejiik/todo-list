@@ -112,7 +112,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: lightgrey;
-    grid-template-columns: 2rem 10rem;
+    grid-template-columns: 2rem 10rem 2rem;
     border-radius: 0.7rem;
     font-size: 1.7rem;
     padding: 0 1.4rem;
@@ -235,7 +235,7 @@ fieldset > input {
 .card-sub {
     width: 100%;
     display: grid;
-    grid-template-columns: 2rem 4fr 1fr 3rem 3rem;
+    grid-template-columns: 2rem 4fr 1fr 3rem 2.8rem;
     gap: 1rem;
 }
 
