@@ -235,7 +235,7 @@ fieldset > input {
 .card-sub {
     width: 100%;
     display: grid;
-    grid-template-columns: 2rem 3fr 1fr 2.5rem;
+    grid-template-columns: 2rem 4fr 1fr 3rem 3rem;
     gap: 1rem;
 }
 
@@ -251,6 +251,29 @@ fieldset > input {
 
 .card-sub svg {
     height: 2.5rem;
+}
+
+.priority-ctn {
+    border-right: 1px solid black;
+}
+
+.delete-btn {
+    border-radius: 5rem;
+    padding: 0;
+    border: none;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-btn:hover {
+    background-color: whitesmoke;
+}
+
+.delete-btn:hover svg {
+    fill: orangered;
+    filter: brightness(100%);
 }
 
 .todo-card:hover {
