@@ -69,11 +69,21 @@ function dispTodo(todo) {
 };
 
 function displaySavedTodos() {
+    const cHeader = document.querySelector(".list-header");
     const disp = document.querySelector(".content");
+
+    const cHeadImg = document.createElement("div");
+    cHeadImg.innerHTML = listIcon;
+    cHeadImg.classList.add("lheader-icon");
+    const cHeadTtle = document.createElement("h2");
+    cHeadTtle.textContent = "All ToDos";
+    cHeadTtle.style.cssText = "font-family: 'Outfit';"
+    cHeader.appendChild(cHeadImg);
+    cHeader.appendChild(cHeadTtle);
 
     disp.innerHTML = "";
 
-    Object.entries(lists).forEach(([listName, todos]) => {
+    Object.entries(lists).forEach(([_, todos]) => {
 
         todos.forEach(todo => {
             const todoE = document.createElement("div");
