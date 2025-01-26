@@ -14,6 +14,7 @@ class toDo{
         this.title = title;
         this.priority = priority;
         this.dueDate = dueDate;
+        this.checkStatus = false;
     };
 };
 
