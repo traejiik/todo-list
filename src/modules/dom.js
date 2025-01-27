@@ -19,7 +19,7 @@ function addListsToSidebar() {
         alltodo.appendChild(text);
         if (item !== "All ToDos") {
             const delIcon = document.createElement("button");
-            delIcon.classList.add("delete-btn");
+            delIcon.classList.add("ldelete-btn");
             delIcon.innerHTML = deleteIcon;
             delIcon.dataset.list = item;
 
