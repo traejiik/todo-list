@@ -206,6 +206,10 @@ fieldset > input {
     padding: 1rem;
 }
 
+.content {
+    overflow-y: scroll;
+}
+
 .list-header {
     background-color: white;
     height: 3rem;
@@ -304,12 +308,18 @@ dialog {
     position: fixed;
     padding: 2rem;
     border-radius: 1rem;
-    width: 400px;
+    width: 600px;
     top: 0;
     left: 0;
     margin: auto;
     background-color: rgba(254, 106, 0, 0.5);
+    box-shadow: 0px 0px 24px black;
     backdrop-filter: blur(20px);
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.65);
+    filter: blur(4px);
 }
 
 #fancy-form {
