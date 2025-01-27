@@ -93,7 +93,7 @@ function remTodo() {
 };
 
 function remList() {
-    const del = document.createElement(".delete-btn");
+    const del = document.querySelectorAll(".delete-btn");
 
     del.forEach(buttons => {
         buttons.addEventListener("click", () => {
