@@ -1,6 +1,7 @@
 import "./styles.css";
 import { toDo, lists, createListTodo, newList, defaultList } from "./modules/todo.js";
 import { addListsToSidebar, dispTodo, displaySavedTodos } from "./modules/dom.js";
+import { deleteTodo, deleteList } from "./modules/manip.js";
 
 // Local Storage
 function saveToStorage() {
@@ -40,7 +41,7 @@ function addTodo() {
             defaultList(todo);
             createListTodo(list.value, todo);
             addListsToSidebar();
-            dispTodo(todo)
+            dispTodo(todo);
         };
         diaLog.close();
         formD.reset();
@@ -76,12 +77,30 @@ function addList() {
     });
 };
 
+function remTodo() {
+    const del = document.querySelectorAll(".delete-btn");
+
+    del.forEach(buttons => {
+        buttons.addEventListener("click", () => {
+            const todoTitle = buttons.dataset.title;
+            const todoToDelete = Object.values(lists)
+                .flat()
+                .find(todo => todo.title === todoTitle);
+            deleteTodo(todoToDelete);
+            displaySavedTodos();
+        });
+    });
+};
+
+function remList() {};
+
 // call functions
     // initial load
 addListsToSidebar();
 displaySavedTodos();
     // functionality calls
 addTodo();
+remTodo();
 addList();
 
 export { saveToStorage };
