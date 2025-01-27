@@ -21,6 +21,7 @@ function addListsToSidebar() {
             const delIcon = document.createElement("button");
             delIcon.classList.add("delete-btn");
             delIcon.innerHTML = deleteIcon;
+            delIcon.dataset.list = item;
 
             alltodo.appendChild(delIcon);
         };
