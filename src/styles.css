@@ -206,7 +206,7 @@ fieldset > input {
     padding: 1rem;
 }
 
-.list-header {
+.list-header > div {
     background-color: white;
     height: 3rem;
     width: 50%;
