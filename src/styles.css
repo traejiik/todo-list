@@ -269,6 +269,8 @@ fieldset > input {
 
 .priority-ctn {
     border-right: 1px solid black;
+    display: flex;
+    align-items: center;
 }
 
 .delete-btn {
