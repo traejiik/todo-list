@@ -43,6 +43,7 @@ function dispTodo(todo) {
     const title = document.createElement("h3");
     title.textContent = todo.title;
     const prio = document.createElement("div");
+    prio.classList.add("priority-ctn");
     prio.innerHTML = prioIcon;
     const prioSvg = prio.querySelector("svg");
 
@@ -71,23 +72,26 @@ function dispTodo(todo) {
 
     todoE.appendChild(sub);
 
-    disp.appendChild(todo);
+    disp.appendChild(todoE);
 };
 
 function displaySavedTodos() {
-    const cHeader = document.querySelector(".list-header");
     const disp = document.querySelector(".content");
-
-    const cHeadImg = document.createElement("div");
-    cHeadImg.innerHTML = listIcon;
-    cHeadImg.classList.add("lheader-icon");
-    const cHeadTtle = document.createElement("h2");
-    cHeadTtle.textContent = "All ToDos";
-    cHeadTtle.style.cssText = "font-family: 'Outfit';"
-    cHeader.appendChild(cHeadImg);
-    cHeader.appendChild(cHeadTtle);
-
     disp.innerHTML = "";
+
+    // const cHeader = document.querySelector(".list-header");
+    // cHeader.textContent = "";
+    // const cHeadTtle = document.createElement("div");
+    // const cHeadImg = document.createElement("div");
+    // cHeadImg.innerHTML = listIcon;
+    // cHeadImg.classList.add("lheader-icon");
+    // const cHeadTxt = document.createElement("h2");
+    // cHeadTxt.textContent = "All ToDos";
+    // cHeadTxt.style.cssText = "font-family: 'Outfit';"
+    // cHeadTtle.appendChild(cHeadImg);
+    // cHeadTtle.appendChild(cHeadTxt);
+
+    // cHeader.appendChild(cHeadTtle);
 
     Object.entries(lists).forEach(([_, todos]) => {
         todos.forEach(todo => {
