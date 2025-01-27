@@ -1,5 +1,5 @@
 import listIcon from "../assets/icons/pound-icon.svg";
-import prioIcon from "../assets/icons/exclam.svg";
+import prioIcon from "../assets/icons/alert-circle.svg";
 import deleteIcon from "../assets/icons/delete-circle.svg";
 import { lists } from "./todo.js";
 
