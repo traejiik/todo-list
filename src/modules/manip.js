@@ -10,15 +10,13 @@ function deleteTodo(todo) {
 };
 
 function deleteList(listName) {
-    if (listName in lists) {
-        const todosToRemove = lists[listName].map(todo => todo.title);
+    const listItems = lists[listName];
+    const todosToRemove = listItems.map(todo => todo.title).filter(title => title);
 
-        lists["All Tasks"] = lists["All Tasks"].filter(
-            todo => !todosToRemove.includes(todo.title)
-        );
-
-        delete lists[listName];
-    };
+    lists["All ToDos"] = lists["All ToDos"].filter(
+        todo => !todosToRemove.includes(todo.title)
+    );
+    delete lists[listName];
 
     saveToStorage();
 };
