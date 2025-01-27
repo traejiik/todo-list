@@ -92,7 +92,18 @@ function remTodo() {
     });
 };
 
-function remList() {};
+function remList() {
+    const del = document.createElement(".delete-btn");
+
+    del.forEach(buttons => {
+        buttons.addEventListener("click", () => {
+            const listTitle = buttons.dataset.list;
+            const listDel = Object.keys(lists).find(item => item === listTitle);
+            deleteList(listDel);
+            addListsToSidebar();
+        });
+    });
+};
 
 // call functions
     // initial load
@@ -100,7 +111,8 @@ addListsToSidebar();
 displaySavedTodos();
     // functionality calls
 addTodo();
-remTodo();
 addList();
+remTodo();
+remList();
 
 export { saveToStorage };
