@@ -206,13 +206,16 @@ fieldset > input {
     padding: 1rem;
 }
 
-.list-header > div {
+.list-header {
     background-color: white;
     height: 3rem;
     width: 50%;
     border-radius: 4rem;
     box-shadow: 0px 0px 12px grey;
     margin-bottom: 3rem;
+}
+
+.list-header > div {
     display: flex;
     align-items: center;
     justify-content: center;
