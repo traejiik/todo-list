@@ -58,10 +58,16 @@ function dispTodo(todo) {
     dateInd.classList.add("date-ind");
     dateInd.textContent = todo.dueDate;
 
+    const dltBtn = document.createElement("button");
+    dltBtn.classList.add("delete-btn");
+    dltBtn.innerHTML = deleteIcon;
+    dltBtn.dataset.title = todo.title;
+
     sub.appendChild(check);
     sub.appendChild(title);
     sub.appendChild(dateInd);
     sub.appendChild(prio);
+    sub.appendChild(dltBtn);
 
     todoE.appendChild(sub);
 
@@ -117,6 +123,7 @@ function displaySavedTodos() {
             const dltBtn = document.createElement("button");
             dltBtn.classList.add("delete-btn");
             dltBtn.innerHTML = deleteIcon;
+            dltBtn.dataset.title = todo.title;
 
             sub.appendChild(check);
             sub.appendChild(title);
