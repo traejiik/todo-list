@@ -90,7 +90,6 @@ function displaySavedTodos() {
     disp.innerHTML = "";
 
     Object.entries(lists).forEach(([_, todos]) => {
-
         todos.forEach(todo => {
             const todoE = document.createElement("div");
             todoE.classList.add("todo-card");
