@@ -283,7 +283,8 @@ fieldset > input {
     align-items: center;
 }
 
-.delete-btn {
+.delete-btn,
+.ldelete-btn {
     border-radius: 5rem;
     padding: 0;
     border: none;
@@ -293,11 +294,13 @@ fieldset > input {
     justify-content: center;
 }
 
-.delete-btn:hover {
+.delete-btn:hover,
+.ldelete-btn:hover {
     background-color: whitesmoke;
 }
 
-.delete-btn:hover svg {
+.delete-btn:hover svg,
+.ldelete-btn:hover svg {
     fill: orangered;
     filter: brightness(100%);
 }
