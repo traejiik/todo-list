@@ -79,7 +79,6 @@ function addList() {
 
 function remTodo() {
     const del = document.querySelectorAll(".delete-btn");
-
     del.forEach(buttons => {
         buttons.addEventListener("click", () => {
             const todoTitle = buttons.dataset.title;
