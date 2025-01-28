@@ -1,6 +1,6 @@
 import "./styles.css";
 import { toDo, lists, createListTodo, newList, defaultList } from "./modules/todo.js";
-import { addListsToSidebar, dispTodo, displaySavedTodos, initLoad, loadList, checkStat } from "./modules/dom.js";
+import { addListsToSidebar, dispTodo, displaySavedTodos, initLoad, loadList } from "./modules/dom.js";
 import { deleteTodo, deleteList } from "./modules/manip.js";
 
 // Local Storage
