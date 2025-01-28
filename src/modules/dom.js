@@ -149,7 +149,7 @@ function initLoad() {
     const allTodos = lists["All ToDos"];
 
     if (allTodos || allTodos.length > 0) {
-        allTasks.forEach(todo => {
+        allTodos.forEach(todo => {
             const todoE = document.createElement("div");
             todoE.classList.add("todo-card");
 
