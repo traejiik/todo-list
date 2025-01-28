@@ -100,6 +100,7 @@ function remList() {
             const listDel = Object.keys(lists).find(item => item === listTitle);
             deleteList(listDel);
             addListsToSidebar();
+            initLoad();
         });
     });
 };
