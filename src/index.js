@@ -97,11 +97,11 @@ function remList() {
     del.forEach(buttons => {
         buttons.addEventListener("click", () => {
             const listTitle = buttons.dataset.list;
-            const listDel = Object.keys(lists).find(item => item === listTitle);
-            deleteList(listDel);
+            deleteList(listTitle);
+            addListsToSidebar();
+            displaySavedTodos();
         });
     });
-    addListsToSidebar();
 };
 
 // call functions
