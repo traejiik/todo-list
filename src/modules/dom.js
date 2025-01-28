@@ -270,6 +270,4 @@ function loadList(list) {
     };
 };
 
-function checkStat() {};
-
-export { addListsToSidebar, dispTodo, displaySavedTodos, initLoad, loadList, checkStat };
+export { addListsToSidebar, dispTodo, displaySavedTodos, initLoad, loadList };
