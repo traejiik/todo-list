@@ -99,10 +99,9 @@ function remList() {
             const listTitle = buttons.dataset.list;
             const listDel = Object.keys(lists).find(item => item === listTitle);
             deleteList(listDel);
-            addListsToSidebar();
-            initLoad();
         });
     });
+    addListsToSidebar();
 };
 
 // call functions
