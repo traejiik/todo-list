@@ -11,7 +11,7 @@ function deleteTodo(todo) {
 
 function deleteList(listName) {
     const listItems = lists[listName];
-    const todosToRemove = listItems.map(todo => todo.title).filter(title => title);
+    const todosToRemove = listItems.map(todo => todo.title);
 
     lists["All ToDos"] = lists["All ToDos"].filter(
         todo => !todosToRemove.includes(todo.title)
