@@ -34,14 +34,12 @@ function addTodo() {
         if (list.value === "") {
             let todo = new toDo(title.value, prio.value, dateIn.value);
             defaultList(todo);
-            addListsToSidebar();
-            dispTodo(todo);
+            updateUI();
         } else {
             let todo = new toDo(title.value, prio.value, dateIn.value, list.value);
             defaultList(todo);
             createListTodo(list.value, todo);
-            addListsToSidebar();
-            dispTodo(todo);
+            updateUI();
         };
         diaLog.close();
         formD.reset();
@@ -72,7 +70,7 @@ function addList() {
         } else {
             newList(listInp.value);
             addlistFrm.style.display = "none";
-            addListsToSidebar();
+            updateUI()
         };
     });
 };
@@ -86,7 +84,7 @@ function remTodo() {
                 .flat()
                 .find(todo => todo.title === todoTitle);
             deleteTodo(todoToDelete);
-            displaySavedTodos();
+            updateUI();
         });
     });
 };
@@ -98,10 +96,16 @@ function remList() {
         buttons.addEventListener("click", () => {
             const listTitle = buttons.dataset.list;
             deleteList(listTitle);
-            addListsToSidebar();
-            displaySavedTodos();
+            updateUI();
         });
     });
+};
+
+function updateUI() {
+    addListsToSidebar();
+    displaySavedTodos();
+    remTodo();
+    remList();
 };
 
 // call functions
