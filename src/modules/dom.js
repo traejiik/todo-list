@@ -45,6 +45,10 @@ function dispTodo(todo) {
     check.classList.add("checkbox");
     check.checked = todo.checkStatus;
 
+    if (check.checked === true) {
+        todoE.classList.add("complete-todo");
+    };
+
     const title = document.createElement("h3");
     title.textContent = todo.title;
 
