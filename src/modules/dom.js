@@ -1,6 +1,7 @@
 import listIcon from "../assets/icons/pound-icon.svg";
 import prioIcon from "../assets/icons/alert-circle.svg";
 import deleteIcon from "../assets/icons/delete-circle.svg";
+import emptyList from "../assets/icons/tray-alert.svg"
 import { lists } from "./todo.js";
 
 function addListsToSidebar() {
@@ -43,8 +44,10 @@ function dispTodo(todo) {
     check.type = "checkbox";
     check.classList.add("checkbox");
     check.checked = todo.checkStatus;
+
     const title = document.createElement("h3");
     title.textContent = todo.title;
+
     const prio = document.createElement("div");
     prio.classList.add("priority-ctn");
     prio.innerHTML = prioIcon;
@@ -74,7 +77,6 @@ function dispTodo(todo) {
     sub.appendChild(dltBtn);
 
     todoE.appendChild(sub);
-
     disp.appendChild(todoE);
 };
 
@@ -84,56 +86,12 @@ function displaySavedTodos() {
 
     Object.entries(lists).forEach(([_, todos]) => {
         todos.forEach(todo => {
-            const todoE = document.createElement("div");
-            todoE.classList.add("todo-card");
-
-            const sub = document.createElement("div");
-            sub.classList.add("card-sub");
-
-            const check = document.createElement("input");
-            check.type = "checkbox";
-            check.checked = todos.checkStatus;
-            check.classList.add("checkbox");
-            const title = document.createElement("h3");
-            title.textContent = todo.title;
-            const prio = document.createElement("div");
-            prio.classList.add("priority-ctn");
-            prio.innerHTML = prioIcon;
-            const prioSvg = prio.querySelector("svg");
-
-            if (todo.priority === "high") {
-                prioSvg.style.fill = "red";
-            } else if (todo.priority === "medium") {
-                prioSvg.style.fill = "orange";
-            } else {
-                prioSvg.style.fill = "green";
-            }
-
-            const dateInd = document.createElement("div");
-            dateInd.classList.add("date-ind");
-            dateInd.textContent = todo.dueDate;
-
-            const dltBtn = document.createElement("button");
-            dltBtn.classList.add("delete-btn");
-            dltBtn.innerHTML = deleteIcon;
-            dltBtn.dataset.title = todo.title;
-
-            sub.appendChild(check);
-            sub.appendChild(title);
-            sub.appendChild(dateInd);
-            sub.appendChild(prio);
-            sub.appendChild(dltBtn);
-
-            todoE.appendChild(sub);
-            disp.appendChild(todoE);
+            dispTodo(todo);
         });
     });
 };
 
-function initLoad() {
-    const disp = document.querySelector(".content");
-    disp.innerHTML = "";
-
+function updateListHeader(title) {
     const cHeader = document.querySelector(".list-header");
     cHeader.textContent = "";
     const cHeadTtle = document.createElement("div");
@@ -141,131 +99,46 @@ function initLoad() {
     cHeadImg.innerHTML = listIcon;
     cHeadImg.classList.add("lheader-icon");
     const cHeadTxt = document.createElement("h2");
-    cHeadTxt.textContent = "All ToDos";
+    cHeadTxt.textContent = `${title}`;
     cHeadTxt.style.cssText = "font-family: 'Outfit';"
     cHeadTtle.appendChild(cHeadImg);
     cHeadTtle.appendChild(cHeadTxt);
-
     cHeader.appendChild(cHeadTtle);
+}
 
-    const allTodos = lists["All ToDos"];
-
-    if (allTodos || allTodos.length > 0) {
-        allTodos.forEach(todo => {
-            const todoE = document.createElement("div");
-            todoE.classList.add("todo-card");
-
-            const sub = document.createElement("div");
-            sub.classList.add("card-sub");
-
-            const check = document.createElement("input");
-            check.type = "checkbox";
-            check.classList.add("checkbox");
-            check.checked = todo.checkStatus;
-
-            const title = document.createElement("h3");
-            title.textContent = todo.title;
-
-            const prio = document.createElement("div");
-            prio.classList.add("priority-ctn");
-            prio.innerHTML = prioIcon;
-            const prioSvg = prio.querySelector("svg");
-
-            if (todo.priority === "high") {
-                prioSvg.style.fill = "red";
-            } else if (todo.priority === "medium") {
-                prioSvg.style.fill = "orange";
-            } else {
-                prioSvg.style.fill = "green";
-            }
-
-            const dateInd = document.createElement("div");
-            dateInd.classList.add("date-ind");
-            dateInd.textContent = todo.dueDate;
-
-            const dltBtn = document.createElement("button");
-            dltBtn.classList.add("delete-btn");
-            dltBtn.innerHTML = deleteIcon;
-            dltBtn.dataset.title = todo.title;
-
-            sub.appendChild(check);
-            sub.appendChild(title);
-            sub.appendChild(dateInd);
-            sub.appendChild(prio);
-            sub.appendChild(dltBtn);
-
-            todoE.appendChild(sub);
-            disp.appendChild(todoE);
-        });
-    };
+function initLoad() {
+    let defList = "All ToDos";
+    updateListHeader(defList);
+    loadList(defList);
 };
 
 function loadList(list) {
     const disp = document.querySelector(".content");
     disp.innerHTML = "";
 
-    const allTodos = lists[list];
+    updateListHeader(list);
 
-    // Update list header
-    const cHeader = document.querySelector(".list-header");
-    cHeader.textContent = "";
-    const cHeadTtle = document.createElement("div");
-    const cHeadImg = document.createElement("div");
-    cHeadImg.innerHTML = listIcon;
-    cHeadImg.classList.add("lheader-icon");
-    const cHeadTxt = document.createElement("h2");
-    cHeadTxt.textContent = `${list}`;
-    cHeadTxt.style.cssText = "font-family: 'Outfit';"
-    cHeadTtle.appendChild(cHeadImg);
-    cHeadTtle.appendChild(cHeadTxt);
-    cHeader.appendChild(cHeadTtle);
+    const todosList = lists[list] || [];
+    if (todosList.length === 0) {
+        const empAlrt = document.createElement("div");
+        empAlrt.classList.add("empty-list");
 
-    if (allTodos || allTodos.length > 0) {
-        allTodos.forEach(todo => {
-            const todoE = document.createElement("div");
-            todoE.classList.add("todo-card");
+        const empText = document.createElement("div");
+        empText.classList.add("empty-list-text");
+        empText.textContent = "The list is empty";
 
-            const sub = document.createElement("div");
-            sub.classList.add("card-sub");
+        const empImg = document.createElement("div");
+        empImg.innerHTML = emptyList;
+        const empSvg = empImg.querySelector("svg");
+        empSvg.classList.add("empty-list-img");
 
-            const check = document.createElement("input");
-            check.type = "checkbox";
-            check.classList.add("checkbox");
-            check.checked = todo.checkStatus;
+        empAlrt.appendChild(empText);
+        empAlrt.appendChild(empImg);
 
-            const title = document.createElement("h3");
-            title.textContent = todo.title;
-
-            const prio = document.createElement("div");
-            prio.classList.add("priority-ctn");
-            prio.innerHTML = prioIcon;
-            const prioSvg = prio.querySelector("svg");
-
-            if (todo.priority === "high") {
-                prioSvg.style.fill = "red";
-            } else if (todo.priority === "medium") {
-                prioSvg.style.fill = "orange";
-            } else {
-                prioSvg.style.fill = "green";
-            }
-
-            const dateInd = document.createElement("div");
-            dateInd.classList.add("date-ind");
-            dateInd.textContent = todo.dueDate;
-
-            const dltBtn = document.createElement("button");
-            dltBtn.classList.add("delete-btn");
-            dltBtn.innerHTML = deleteIcon;
-            dltBtn.dataset.title = todo.title;
-
-            sub.appendChild(check);
-            sub.appendChild(title);
-            sub.appendChild(dateInd);
-            sub.appendChild(prio);
-            sub.appendChild(dltBtn);
-
-            todoE.appendChild(sub);
-            disp.appendChild(todoE);
+        disp.appendChild(empAlrt);
+    } else {
+        todosList.forEach(todo => {
+            dispTodo(todo);
         });
     };
 };
