@@ -184,21 +184,23 @@ fieldset > input {
     height: 3rem;
     width: 6rem;
     border-radius: 0.5rem;
-    border: 0.8px solid;
+    border: 1px solid;
     font-weight: bold;
 }
 
-.create-list {
+.create-list,
+.todo-add {
     background-color: lightgreen;
 }
 
-.close-list {
+.close-list,
+.todo-close {
     background-color: rgb(255, 141, 141);
 }
 
 .create-list:hover,
 .close-list:hover {
-    filter: brightness(70%);
+    filter: brightness(80%);
 }
 
 /* MAIN ELEMENTS */
@@ -397,7 +399,7 @@ dialog::backdrop {
     border-radius: 0.7rem;
     text-transform: capitalize;
     font-weight: 600;
-    border: none;
+    border: 1px solid;
 }
 
 #fancy-form .btn-ctn > button:hover {
