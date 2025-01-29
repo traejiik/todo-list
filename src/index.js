@@ -126,7 +126,7 @@ function markComplete() {
             Object.values(lists).forEach(todos => {
                 const matchedTodo = todos.find(todo => todo.title === isTitle);
                 if (matchedTodo) {
-                    matchedTodo.checkStatus = checkbox.checked;
+                    matchedTodo.checkStatus = item.checked;
                 };
             });
 
