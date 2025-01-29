@@ -9,7 +9,6 @@ function saveToStorage() {
 };
 
 // Functionality
-let currentView;
 function addTodo() {
     const addTodoBtn = document.querySelector(".add-todo");
     const diaLog = document.querySelector(".input-todo");
@@ -35,11 +34,11 @@ function addTodo() {
         if (list.value === "") {
             let todo = new toDo(title.value, prio.value, dateIn.value);
             listHandler(todo);
-            updateUI();
+            updateUI("All ToDos");
         } else {
             let todo = new toDo(title.value, prio.value, dateIn.value, list.value);
             listHandler(todo, list.value);
-            updateUI();
+            updateUI(list.value);
         };
         diaLog.close();
         formD.reset();
@@ -70,13 +69,25 @@ function addList() {
         } else {
             newList(listInp.value);
             addlistFrm.style.display = "none";
-            updateUI()
+            updateUI(listInp.value);
         };
+    });
+};
+
+function viewList() {
+    const listEl = document.querySelectorAll(".list-tag");
+
+    listEl.forEach(item => {
+        item.addEventListener("click", () => {
+            const listTitle = item.dataset.list;
+            updateUI(listTitle);
+        })
     });
 };
 
 function remTodo() {
     const del = document.querySelectorAll(".delete-btn");
+    const currView = document.querySelector(".header-title").textContent;
     del.forEach(buttons => {
         buttons.addEventListener("click", () => {
             const todoTitle = buttons.dataset.title;
@@ -84,7 +95,7 @@ function remTodo() {
                 .flat()
                 .find(todo => todo.title === todoTitle);
             deleteTodo(todoToDelete);
-            updateUI();
+            updateUI(currView);
         });
     });
 };
@@ -93,20 +104,25 @@ function remList() {
     const del = document.querySelectorAll(".ldelete-btn");
 
     del.forEach(buttons => {
-        buttons.addEventListener("click", () => {
+        buttons.addEventListener("click", (event) => {
+            event.stopPropagation();
             const listTitle = buttons.dataset.list;
             deleteList(listTitle);
-            updateUI();
+
+            if (!lists[listTitle]) {
+                updateUI("All Todos");
+            };
         });
     });
 };
 
-function updateUI() {
+function updateUI(item) {
     addListsToSidebar();
-    displaySavedTodos();
     remTodo();
     remList();
     viewList();
+    const validList = lists[item] ? item : "All ToDos";
+    loadList(validList);
 };
 
 function pageLoad() {
@@ -119,17 +135,6 @@ function pageLoad() {
     remTodo();
     remList();
     viewList();
-};
-
-function viewList() {
-    const listEl = document.querySelectorAll(".list-tag");
-
-    listEl.forEach(item => {
-        item.addEventListener("click", () => {
-            const listTitle = item.dataset.list;
-            loadList(listTitle);
-        })
-    });
 };
 
 pageLoad();
