@@ -136,9 +136,7 @@ function loadList(list) {
         disp.appendChild(empAlrt);
     } else {
         disp.style.cssText = "justify-content: normal;"
-        todosList.forEach(todo => {
-            dispTodo(todo);
-        });
+        todosList.forEach(todo => dispTodo(todo));
     };
 };
 
