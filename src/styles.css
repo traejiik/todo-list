@@ -308,6 +308,13 @@ fieldset > input {
     transition: 0.5s ease;
 }
 
+.complete-todo {
+    background-color: #424769a5;
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: line-through;
+    filter: brightness(70%);
+}
+
 .empty-list {
     display: flex;
     flex-direction: row-reverse;
