@@ -92,8 +92,7 @@ function updateListHeader(title) {
     cHeader.textContent = "";
     const cHeadTtle = document.createElement("div");
     const cHeadImg = document.createElement("div");
-    if (title === "t")
-        cHeadImg.innerHTML = listIcon;
+    cHeadImg.innerHTML = listIcon;
     cHeadImg.classList.add("lheader-icon");
     const cHeadTxt = document.createElement("h2");
     cHeadTxt.textContent = `${title}`;
@@ -170,18 +169,22 @@ function listEmpty() {
 
 function showToday() {
     const todayTodos = [];
-    Object.entries(lists).forEach(([_, item]) => {
-        item.forEach(todo => {
-            const dueDate = todo.dueDate;
-            if (dueDate && isToday(dueDate)) {
-                todayTodos.push(dueDate);
-            };
-        })
-    });
+
+    let defList = "All ToDos";
+    const todosList = lists[defList];
+    todosList.forEach(item => {
+        const dueDate = item.dueDate;
+        if (dueDate && isToday(dueDate)) {
+            todayTodos.push(item);
+        };
+    })
+    console.log(todayTodos);
 
     if (todayTodos.length === 0) {
         listEmpty();
+        updateListHeader("today");
     } else {
+        updateListHeader("today");
         const disp = document.querySelector(".content");
         disp.innerHTML = "";
 
@@ -194,18 +197,22 @@ function showToday() {
 
 function showWeek() {
     const weekTodos = [];
-    Object.entries(lists).forEach(([_, item]) => {
-        item.forEach(todo => {
-            const dueDate = todo.dueDate;
-            if (dueDate && isThisWeek(dueDate)) {
-                weekTodos.push(dueDate);
-            };
-        })
-    });
+
+    let defList = "All ToDos";
+    const todosList = lists[defList];
+    todosList.forEach(item => {
+        const dueDate = item.dueDate;
+        if (dueDate && isThisWeek(dueDate)) {
+            weekTodos.push(item);
+        };
+    })
+    console.log(weekTodos);
 
     if (weekTodos.length === 0) {
         listEmpty();
+        updateListHeader("this week");
     } else {
+        updateListHeader("this week");
         const disp = document.querySelector(".content");
         disp.innerHTML = "";
 
