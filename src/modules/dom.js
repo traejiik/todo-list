@@ -46,10 +46,6 @@ function dispTodo(todo) {
     check.checked = todo.checkStatus;
     check.dataset.title = todo.title;
 
-    if (check.checked === true) {
-        todoE.classList.add("complete-todo");
-    };
-
     const title = document.createElement("h3");
     title.textContent = todo.title;
 
@@ -64,7 +60,7 @@ function dispTodo(todo) {
         prioSvg.style.fill = "orange";
     } else {
         prioSvg.style.fill = "green";
-    }
+    };
 
     const dateInd = document.createElement("div");
     dateInd.classList.add("date-ind");
@@ -74,6 +70,12 @@ function dispTodo(todo) {
     dltBtn.classList.add("delete-btn");
     dltBtn.innerHTML = deleteIcon;
     dltBtn.dataset.title = todo.title;
+
+    if (check.checked === true) {
+        todoE.classList.add("complete-todo");
+        prioSvg.style.fill = "#caced2";
+        dltBtn.style.backgroundColor = "#424769a5";
+    };
 
     sub.appendChild(check);
     sub.appendChild(title);
