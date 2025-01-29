@@ -1,7 +1,7 @@
 import "./styles.css";
 import { toDo, lists, newList, listHandler } from "./modules/todo.js";
-import { addListsToSidebar, initLoad, loadList } from "./modules/dom.js";
-import { deleteTodo, deleteList, showToday, showWeek } from "./modules/manip.js";
+import { addListsToSidebar, initLoad, loadList, showToday, showWeek } from "./modules/dom.js";
+import { deleteTodo, deleteList } from "./modules/manip.js";
 
 // Local Storage
 function saveToStorage() {
@@ -150,11 +150,11 @@ function dateListeners() {
 
     todayBtn.addEventListener("click", () => {
         showToday();
-        updateUI(todayBtn.dataset.tab);
+        minorUI();
     });
     weekBtn.addEventListener("click", () => {
         showWeek();
-        updateUI(weekBtn.dataset.tab);
+        minorUI();
     });
 };
 
@@ -166,8 +166,15 @@ function updateUI(item) {
     remTodo();
     remList();
     markComplete();
-    dateListeners();
 };
+
+function minorUI() {
+    addListsToSidebar();
+    viewList();
+    remTodo();
+    remList();
+    markComplete();
+}
 
 function pageLoad() {
     // initial load
