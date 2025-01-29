@@ -120,12 +120,14 @@ function loadList(list) {
 
     const todosList = lists[list] || [];
     if (todosList.length === 0) {
+        disp.style.cssText = "justify-content: space-around;"
+
         const empAlrt = document.createElement("div");
         empAlrt.classList.add("empty-list");
 
         const empText = document.createElement("div");
         empText.classList.add("empty-list-text");
-        empText.textContent = "The list is empty";
+        empText.textContent = "This list is empty :(";
 
         const empImg = document.createElement("div");
         empImg.innerHTML = emptyList;
@@ -137,6 +139,7 @@ function loadList(list) {
 
         disp.appendChild(empAlrt);
     } else {
+        disp.style.cssText = "justify-content: normal;"
         todosList.forEach(todo => {
             dispTodo(todo);
         });
