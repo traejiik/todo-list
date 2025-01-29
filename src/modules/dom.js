@@ -101,6 +101,7 @@ function updateListHeader(title) {
     const cHeadTxt = document.createElement("h2");
     cHeadTxt.textContent = `${title}`;
     cHeadTxt.style.cssText = "font-family: 'Outfit';"
+    cHeadTxt.classList.add("header-title");
     cHeadTtle.appendChild(cHeadImg);
     cHeadTtle.appendChild(cHeadTxt);
     cHeader.appendChild(cHeadTtle);
@@ -127,7 +128,7 @@ function loadList(list) {
 
         const empText = document.createElement("div");
         empText.classList.add("empty-list-text");
-        empText.textContent = "This list is empty :(";
+        empText.textContent = "This list is empty";
 
         const empImg = document.createElement("div");
         empImg.innerHTML = emptyList;
