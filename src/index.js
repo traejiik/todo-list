@@ -77,17 +77,6 @@ function addList() {
     });
 };
 
-function viewList() {
-    const listEl = document.querySelectorAll(".list-tag");
-
-    listEl.forEach(item => {
-        item.addEventListener("click", () => {
-            const listTitle = item.dataset.list;
-            updateUI(listTitle);
-        })
-    });
-};
-
 function remTodo() {
     const del = document.querySelectorAll(".delete-btn");
     const currView = document.querySelector(".header-title").textContent;
@@ -112,15 +101,14 @@ function remList() {
             const listTitle = buttons.dataset.list;
             deleteList(listTitle);
 
-            if (!lists[listTitle]) {
-                updateUI("All Todos");
-            };
-        });
+            updateUI("All Todos");
     });
+});
 };
 
 function markComplete() {
     const checkboxes = document.querySelectorAll(".checkbox");
+    const currView = document.querySelector(".header-title").textContent;
     
     checkboxes.forEach(item => {
         item.addEventListener("click", () => {
@@ -140,7 +128,20 @@ function markComplete() {
             };
 
             saveToStorage();
+            updateUI(currView);
         });
+    });
+    
+};
+
+function viewList() {
+    const listEl = document.querySelectorAll(".list-tag");
+
+    listEl.forEach(item => {
+        item.addEventListener("click", () => {
+            const listTitle = item.dataset.list;
+            updateUI(listTitle);
+        })
     });
 };
 
@@ -151,11 +152,10 @@ function showWeek() {};
 function updateUI(item) {
     const validList = lists[item] ? item : "All ToDos";
     addListsToSidebar();
+    loadList(validList);
     remTodo();
     remList();
-    viewList();
     markComplete();
-    loadList(validList);
 };
 
 function pageLoad() {
