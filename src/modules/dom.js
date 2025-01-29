@@ -3,7 +3,7 @@ import prioIcon from "../assets/icons/alert-circle.svg";
 import deleteIcon from "../assets/icons/delete-circle.svg";
 import emptyList from "../assets/icons/tray-alert.svg"
 import { lists } from "./todo.js";
-import {isToday, isThisWeek } from "date-fns"
+import { isToday, isThisWeek } from "date-fns"
 
 function addListsToSidebar() {
     const listCtn = document.querySelector(".list-ctn");
@@ -93,7 +93,7 @@ function updateListHeader(title) {
     const cHeadTtle = document.createElement("div");
     const cHeadImg = document.createElement("div");
     if (title === "t")
-    cHeadImg.innerHTML = listIcon;
+        cHeadImg.innerHTML = listIcon;
     cHeadImg.classList.add("lheader-icon");
     const cHeadTxt = document.createElement("h2");
     cHeadTxt.textContent = `${title}`;
@@ -144,6 +144,30 @@ function loadList(list) {
     };
 };
 
+function listEmpty() {
+    const disp = document.querySelector(".content");
+    disp.innerHTML = "";
+
+    disp.style.cssText = "justify-content: space-around;"
+
+    const empAlrt = document.createElement("div");
+    empAlrt.classList.add("empty-list");
+
+    const empText = document.createElement("div");
+    empText.classList.add("empty-list-text");
+    empText.textContent = "This list is empty";
+
+    const empImg = document.createElement("div");
+    empImg.innerHTML = emptyList;
+    const empSvg = empImg.querySelector("svg");
+    empSvg.classList.add("empty-list-img");
+
+    empAlrt.appendChild(empText);
+    empAlrt.appendChild(empImg);
+
+    disp.appendChild(empAlrt);
+};
+
 function showToday() {
     const todayTodos = [];
     Object.entries(lists).forEach(([_, item]) => {
@@ -154,9 +178,18 @@ function showToday() {
             };
         })
     });
-    todayTodos.forEach(todos => {
-        dispTodo(todos);
-    });
+
+    if (todayTodos.length === 0) {
+        listEmpty();
+    } else {
+        const disp = document.querySelector(".content");
+        disp.innerHTML = "";
+
+        disp.style.cssText = "justify-content: normal;"
+        todayTodos.forEach(todos => {
+            dispTodo(todos);
+        });
+    };
 };
 
 function showWeek() {
@@ -169,9 +202,18 @@ function showWeek() {
             };
         })
     });
-    weekTodos.forEach(todos => {
-        dispTodo(todos);
-    });
+
+    if (weekTodos.length === 0) {
+        listEmpty();
+    } else {
+        const disp = document.querySelector(".content");
+        disp.innerHTML = "";
+
+        disp.style.cssText = "justify-content: normal;"
+        weekTodos.forEach(todos => {
+            dispTodo(todos);
+        });
+    };
 };
 
 export { addListsToSidebar, initLoad, loadList, showToday, showWeek };
