@@ -3,6 +3,7 @@ import prioIcon from "../assets/icons/alert-circle.svg";
 import deleteIcon from "../assets/icons/delete-circle.svg";
 import emptyList from "../assets/icons/tray-alert.svg"
 import { lists } from "./todo.js";
+import {isToday, isThisWeek } from "date-fns"
 
 function addListsToSidebar() {
     const listCtn = document.querySelector(".list-ctn");
@@ -91,6 +92,7 @@ function updateListHeader(title) {
     cHeader.textContent = "";
     const cHeadTtle = document.createElement("div");
     const cHeadImg = document.createElement("div");
+    if (title === "t")
     cHeadImg.innerHTML = listIcon;
     cHeadImg.classList.add("lheader-icon");
     const cHeadTxt = document.createElement("h2");
@@ -136,8 +138,40 @@ function loadList(list) {
         disp.appendChild(empAlrt);
     } else {
         disp.style.cssText = "justify-content: normal;"
-        todosList.forEach(todo => dispTodo(todo));
+        todosList.forEach(todo => {
+            dispTodo(todo)
+        });
     };
 };
 
-export { addListsToSidebar, initLoad, loadList };
+function showToday() {
+    const todayTodos = [];
+    Object.entries(lists).forEach(([_, item]) => {
+        item.forEach(todo => {
+            const dueDate = todo.dueDate;
+            if (dueDate && isToday(dueDate)) {
+                todayTodos.push(dueDate);
+            };
+        })
+    });
+    todayTodos.forEach(todos => {
+        dispTodo(todos);
+    });
+};
+
+function showWeek() {
+    const weekTodos = [];
+    Object.entries(lists).forEach(([_, item]) => {
+        item.forEach(todo => {
+            const dueDate = todo.dueDate;
+            if (dueDate && isThisWeek(dueDate)) {
+                weekTodos.push(dueDate);
+            };
+        })
+    });
+    weekTodos.forEach(todos => {
+        dispTodo(todos);
+    });
+};
+
+export { addListsToSidebar, initLoad, loadList, showToday, showWeek };
