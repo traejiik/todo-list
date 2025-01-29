@@ -19,22 +19,20 @@ class toDo{
 };
 
 // lists
-function createListTodo(list, todo) {
-    if (!lists[list]) {
-        lists[list] = [];
-    };
-    lists[list].push(todo);
-    saveToStorage();
-};
-
 function newList(list) {
     lists[list] = [];
     saveToStorage();
 };
 
-function defaultList(todo) {
+function listHandler(todo, list = null) {
     lists["All ToDos"].push(todo);
+    if (list) {
+        if (!lists[list]) {
+            lists[list] = [];
+        };
+        lists[list].push(todo);
+    };
     saveToStorage();
 };
 
-export { toDo, lists, createListTodo, newList, defaultList };
+export { toDo, lists, newList, listHandler };
