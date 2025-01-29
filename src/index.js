@@ -60,6 +60,7 @@ function addList() {
     closeListBtn.addEventListener("click", (event) => {
         event.preventDefault();
         addlistFrm.style.display = "none";
+        listInp.reset();
     });
 
     crtListBtn.addEventListener("click", (event) => {
@@ -70,6 +71,7 @@ function addList() {
             newList(listInp.value);
             addlistFrm.style.display = "none";
             updateUI(listInp.value);
+            listInp.reset();
         };
     });
 };
@@ -141,6 +143,10 @@ function markComplete() {
     });
 };
 
+function showToday() {};
+
+function showWeek() {};
+
 function updateUI(item) {
     const validList = lists[item] ? item : "All ToDos";
     addListsToSidebar();
@@ -164,9 +170,6 @@ function pageLoad() {
     markComplete();
 };
 
-const test1 = new toDo("test 1", "low", "2023-12-12");
-test1.checkStatus = true;
-lists["All ToDos"].push(test1);
 pageLoad();
 
 export { saveToStorage };
