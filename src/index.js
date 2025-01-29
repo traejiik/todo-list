@@ -48,6 +48,7 @@ function addTodo() {
 function addList() {
     const addlistFrm = document.querySelector(".input-list");
     const addListBtn = document.querySelector(".add-list");
+    const listFrm = document.getElementById("fancy-list");
     const listInp = document.getElementById("create-list");
     const crtListBtn = document.querySelector(".create-list");
     const closeListBtn = document.querySelector(".close-list");
@@ -60,7 +61,7 @@ function addList() {
     closeListBtn.addEventListener("click", (event) => {
         event.preventDefault();
         addlistFrm.style.display = "none";
-        listInp.reset();
+        listFrm.reset();
     });
 
     crtListBtn.addEventListener("click", (event) => {
@@ -71,7 +72,7 @@ function addList() {
             newList(listInp.value);
             addlistFrm.style.display = "none";
             updateUI(listInp.value);
-            listInp.reset();
+            listFrm.reset();
         };
     });
 };
