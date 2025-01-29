@@ -116,12 +116,38 @@ function remList() {
     });
 };
 
+function markComplete() {
+    const checkboxes = document.querySelectorAll(".checkbox");
+    
+    checkboxes.forEach(item => {
+        item.addEventListener("click", () => {
+            const isTitle = item.dataset.title;
+            const todoCard = item.closest(".todo-card");
+            Object.values(lists).forEach(todos => {
+                const matchedTodo = todos.find(todo => todo.title === isTitle);
+                if (matchedTodo) {
+                    matchedTodo.checkStatus = checkbox.checked;
+                };
+            });
+
+            if (item.checked) {
+                todoCard.classList.add("complete-todo");
+            } else {
+                todoCard.classList.remove("complete-todo");
+            };
+
+            saveToStorage();
+        });
+    });
+};
+
 function updateUI(item) {
+    const validList = lists[item] ? item : "All ToDos";
     addListsToSidebar();
     remTodo();
     remList();
     viewList();
-    const validList = lists[item] ? item : "All ToDos";
+    markComplete();
     loadList(validList);
 };
 
@@ -135,8 +161,12 @@ function pageLoad() {
     remTodo();
     remList();
     viewList();
+    markComplete();
 };
 
+const test1 = new toDo("test 1", "low", "2023-12-12");
+test1.checkStatus = true;
+lists["All ToDos"].push(test1);
 pageLoad();
 
 export { saveToStorage };
