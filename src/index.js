@@ -1,7 +1,7 @@
 import "./styles.css";
 import { toDo, lists, newList, listHandler } from "./modules/todo.js";
 import { addListsToSidebar, initLoad, loadList } from "./modules/dom.js";
-import { deleteTodo, deleteList } from "./modules/manip.js";
+import { deleteTodo, deleteList, showToday, showWeek } from "./modules/manip.js";
 
 // Local Storage
 function saveToStorage() {
@@ -102,14 +102,14 @@ function remList() {
             deleteList(listTitle);
 
             updateUI("All Todos");
+        });
     });
-});
 };
 
 function markComplete() {
     const checkboxes = document.querySelectorAll(".checkbox");
     const currView = document.querySelector(".header-title").textContent;
-    
+
     checkboxes.forEach(item => {
         item.addEventListener("click", () => {
             const isTitle = item.dataset.title;
@@ -131,13 +131,12 @@ function markComplete() {
             updateUI(currView);
         });
     });
-    
-};
+}
 
 function viewList() {
     const listEl = document.querySelectorAll(".list-tag");
 
-    listEl.forEach(item => {
+    listEl.forEach((item) => {
         item.addEventListener("click", () => {
             const listTitle = item.dataset.list;
             updateUI(listTitle);
@@ -145,17 +144,29 @@ function viewList() {
     });
 };
 
-function showToday() {};
+function dateListeners() {
+    const todayBtn = document.querySelector(".today-tab");
+    const weekBtn = document.querySelector(".week-tab");
 
-function showWeek() {};
+    todayBtn.addEventListener("click", () => {
+        showToday();
+        updateUI(todayBtn.dataset.tab);
+    });
+    weekBtn.addEventListener("click", () => {
+        showWeek();
+        updateUI(weekBtn.dataset.tab);
+    });
+};
 
 function updateUI(item) {
     const validList = lists[item] ? item : "All ToDos";
     addListsToSidebar();
     loadList(validList);
+    viewList();
     remTodo();
     remList();
     markComplete();
+    dateListeners();
 };
 
 function pageLoad() {
@@ -169,6 +180,7 @@ function pageLoad() {
     remList();
     viewList();
     markComplete();
+    dateListeners();
 };
 
 pageLoad();
