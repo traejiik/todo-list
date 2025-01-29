@@ -44,6 +44,7 @@ function dispTodo(todo) {
     check.type = "checkbox";
     check.classList.add("checkbox");
     check.checked = todo.checkStatus;
+    check.dataset.title = todo.title;
 
     if (check.checked === true) {
         todoE.classList.add("complete-todo");
