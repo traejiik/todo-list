@@ -73,7 +73,6 @@ function dispTodo(todo) {
 
     if (check.checked === true) {
         todoE.classList.add("complete-todo");
-        prioSvg.style.fill = "#caced2";
         dltBtn.style.backgroundColor = "#424769a5";
     };
 
