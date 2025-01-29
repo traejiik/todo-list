@@ -80,17 +80,6 @@ function dispTodo(todo) {
     disp.appendChild(todoE);
 };
 
-function displaySavedTodos() {
-    const disp = document.querySelector(".content");
-    disp.innerHTML = "";
-
-    Object.entries(lists).forEach(([_, todos]) => {
-        todos.forEach(todo => {
-            dispTodo(todo);
-        });
-    });
-};
-
 function updateListHeader(title) {
     const cHeader = document.querySelector(".list-header");
     cHeader.textContent = "";
@@ -147,4 +136,4 @@ function loadList(list) {
     };
 };
 
-export { addListsToSidebar, dispTodo, displaySavedTodos, initLoad, loadList };
+export { addListsToSidebar, initLoad, loadList };
