@@ -1,6 +1,6 @@
 import "./styles.css";
-import { toDo, lists, createListTodo, newList, defaultList } from "./modules/todo.js";
-import { addListsToSidebar, dispTodo, displaySavedTodos, initLoad, loadList } from "./modules/dom.js";
+import { toDo, lists, newList, listHandler } from "./modules/todo.js";
+import { addListsToSidebar, displaySavedTodos, initLoad, loadList } from "./modules/dom.js";
 import { deleteTodo, deleteList } from "./modules/manip.js";
 
 // Local Storage
@@ -9,6 +9,7 @@ function saveToStorage() {
 };
 
 // Functionality
+let currentView;
 function addTodo() {
     const addTodoBtn = document.querySelector(".add-todo");
     const diaLog = document.querySelector(".input-todo");
@@ -33,12 +34,11 @@ function addTodo() {
         event.preventDefault();
         if (list.value === "") {
             let todo = new toDo(title.value, prio.value, dateIn.value);
-            defaultList(todo);
+            listHandler(todo);
             updateUI();
         } else {
             let todo = new toDo(title.value, prio.value, dateIn.value, list.value);
-            defaultList(todo);
-            createListTodo(list.value, todo);
+            listHandler(todo, list.value);
             updateUI();
         };
         diaLog.close();
@@ -106,16 +106,32 @@ function updateUI() {
     displaySavedTodos();
     remTodo();
     remList();
+    viewList();
 };
 
-// call functions
+function pageLoad() {
     // initial load
-addListsToSidebar();
-initLoad();
+    addListsToSidebar();
+    initLoad();
     // functionality calls
-addTodo();
-addList();
-remTodo();
-remList();
+    addTodo();
+    addList();
+    remTodo();
+    remList();
+    viewList();
+};
+
+function viewList() {
+    const listEl = document.querySelectorAll(".list-tag");
+
+    listEl.forEach(item => {
+        item.addEventListener("click", () => {
+            const listTitle = item.dataset.list;
+            loadList(listTitle);
+        })
+    });
+};
+
+pageLoad();
 
 export { saveToStorage };
